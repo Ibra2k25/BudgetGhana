@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Budget Plan | Ghana Cedis Budget Planner</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body class="results-page">
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-piggy-bank ghana-flag-icon"></i>
+                <span>GhanaBudget</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="form.html" class="nav-link">New Budget</a>
+                <a href="about.html" class="nav-link">About</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="results-background">
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+        </div>
+    </div>
+
+    <div class="results-container">
+        <div class="results-header">
+            <a href="form.html" class="back-button">
+                <i class="fas fa-arrow-left"></i>
+                Back to Form
+            </a>
+            <div class="results-title-section">
+                <h1 class="results-title animate-fade-in">
+                    Your Personalized <span class="gradient-text">Budget Plan</span>
+                </h1>
+                <p class="results-subtitle animate-fade-in">
+                    Smart financial planning tailored for your lifestyle in Ghana
+                </p>
+            </div>
+            <div class="export-buttons">
+                <button class="export-btn" onclick="exportToPDF()">
+                    <i class="fas fa-download"></i>
+                    Download PDF
+                </button>
+                <button class="share-btn" onclick="shareResults()">
+                    <i class="fas fa-share"></i>
+                    Share
+                </button>
+            </div>
+        </div>
+
+        <div class="dashboard" id="dashboard">
+            <!-- Income Overview -->
+            <div class="dashboard-card income-card animate-slide-up">
+                <div class="card-header">
+                    <div class="card-icon icon-primary">
+                        <i class="fas fa-wallet"></i>
+                    </div>
+                    <div class="card-title">
+                        <h3>Monthly Income</h3>
+                        <p>Your total earnings</p>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <div class="amount-display">
+                        <span class="currency">₵</span>
+                        <span class="amount" id="totalIncome">0</span>
+                    </div>
+                    <div class="income-breakdown">
+                        <div class="breakdown-item">
+                            <span>After Tax</span>
+                            <span id="afterTax">₵ 0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Budget Allocation Chart -->
+            <div class="dashboard-card chart-card animate-slide-up">
+                <div class="card-header">
+                    <div class="card-icon icon-secondary">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <div class="card-title">
+                        <h3>Budget Allocation</h3>
+                        <p>How your money is distributed</p>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <canvas id="budgetChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Needs Section -->
+            <div class="dashboard-card needs-card animate-slide-up">
+                <div class="card-header">
+                    <div class="card-icon icon-accent">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <div class="card-title">
+                        <h3>Essential Needs</h3>
+                        <p>Must-have expenses</p>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <div class="expense-items" id="needsItems">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+                    <div class="category-total">
+                        <span>Total Needs:</span>
+                        <span class="amount" id="totalNeeds">₵ 0</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Wants Section -->
+            <div class="dashboard-card wants-card animate-slide-up">
+                <div class="card-header">
+                    <div class="card-icon icon-primary">
+                        <i class="fas fa-coffee"></i>
+                    </div>
+                    <div class="card-title">
+                        <h3>Lifestyle & Wants</h3>
+                        <p>Enjoyment and comfort</p>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <div class="expense-items" id="wantsItems">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+                    <div class="category-total">
+                        <span>Total Wants:</span>
+                        <span class="amount" id="totalWants">₵ 0</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Savings Section -->
+            <div class="dashboard-card savings-card animate-slide-up">
+                <div class="card-header">
+                    <div class="card-icon icon-accent">
+                        <i class="fas fa-piggy-bank"></i>
+                    </div>
+                    <div class="card-title">
+                        <h3>Savings & Investments</h3>
+                        <p>Building your future</p>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <div class="savings-breakdown" id="savingsBreakdown">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+                    <div class="savings-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="savingsProgress"></div>
+                        </div>
+                        <span class="progress-text" id="savingsPercentage">0%</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Financial Health Score -->
+            <div class="dashboard-card health-card animate-slide-up">
+                <div class="card-header">
+                    <div class="card-icon icon-secondary">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <div class="card-title">
+                        <h3>Financial Health Score</h3>
+                        <p>Overall financial wellness</p>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <div class="health-score">
+                        <div class="score-circle">
+                            <canvas id="healthScoreChart"></canvas>
+                            <div class="score-text">
+                                <span class="score-number" id="healthScore">85</span>
+                                <span class="score-label">Score</span>
+                            </div>
+                        </div>
+                        <div class="health-insights" id="healthInsights">
+                            <!-- Will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recommendations -->
+            <div class="dashboard-card recommendations-card animate-slide-up">
+                <div class="card-header">
+                    <div class="card-icon icon-primary">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <div class="card-title">
+                        <h3>Smart Recommendations</h3>
+                        <p>Tips to improve your finances</p>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <div class="recommendations-list" id="recommendationsList">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Budget Summary -->
+            <div class="dashboard-card summary-card animate-slide-up full-width">
+                <div class="card-header">
+                    <div class="card-icon icon-accent">
+                        <i class="fas fa-clipboard-list"></i>
+                    </div>
+                    <div class="card-title">
+                        <h3>Budget Summary</h3>
+                        <p>Complete overview of your financial plan</p>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <div class="summary-grid">
+                        <div class="summary-item">
+                            <div class="summary-label">Total Income</div>
+                            <div class="summary-value" id="summaryIncome">₵ 0</div>
+                        </div>
+                        <div class="summary-item">
+                            <div class="summary-label">Total Expenses</div>
+                            <div class="summary-value" id="summaryExpenses">₵ 0</div>
+                        </div>
+                        <div class="summary-item">
+                            <div class="summary-label">Total Savings</div>
+                            <div class="summary-value" id="summarySavings">₵ 0</div>
+                        </div>
+                        <div class="summary-item">
+                            <div class="summary-label">Remaining Balance</div>
+                            <div class="summary-value" id="summaryBalance">₵ 0</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="action-section">
+            <div class="action-buttons">
+                <a href="form.html" class="action-btn secondary">
+                    <i class="fas fa-edit"></i>
+                    Create New Budget
+                </a>
+                <button class="action-btn primary" onclick="exportToPDF()">
+                    <i class="fas fa-download"></i>
+                    Download PDF Report
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="results.js"></script>
+</body>
+</html>

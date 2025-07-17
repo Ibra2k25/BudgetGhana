@@ -7,539 +7,172 @@
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
     <!-- Landing Page -->
-    <section id="landing" class="section active">
-        <div class="hero-background">
-            <div class="floating-shapes">
-                <div class="shape shape-1"></div>
-                <div class="shape shape-2"></div>
-                <div class="shape shape-3"></div>
-                <div class="shape shape-4"></div>
+    <div class="hero-background">
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+        </div>
+    </div>
+    
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-piggy-bank ghana-flag-icon"></i>
+                <span>GhanaBudget</span>
+            </div>
+            <div class="nav-links">
+                <a href="form.html" class="nav-link">Create Budget</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="terms.html" class="nav-link">Terms & Privacy</a>
             </div>
         </div>
-        
-        <nav class="navbar">
-            <div class="nav-container">
-                <div class="logo">
-                    <i class="fas fa-piggy-bank"></i>
-                    <span>GhanaBudget</span>
-                </div>
-                <div class="nav-links">
-                    <a href="#terms" class="nav-link">Terms & Privacy</a>
-                </div>
-            </div>
-        </nav>
+    </nav>
 
-        <div class="hero-content">
-            <div class="hero-text animate-fade-in">
-                <h1 class="hero-title">
-                    Smart <span class="gradient-text">Budget Planning</span><br>
-                    for Ghana <span class="cedis-symbol">₵</span>
-                </h1>
-                <p class="hero-subtitle">
-                    Create personalized budget plans tailored to your lifestyle and financial goals in Ghana Cedis
-                </p>
-                <button class="cta-button" onclick="showForm()">
-                    <span>Start Planning</span>
-                    <i class="fas fa-arrow-right"></i>
-                </button>
-            </div>
-            <div class="hero-visual animate-slide-up">
-                <div class="budget-preview">
-                    <div class="preview-card">
-                        <i class="fas fa-home ghana-red"></i>
-                        <span>Accommodation</span>
-                        <div class="amount">₵ 1,200</div>
-                    </div>
-                    <div class="preview-card">
-                        <i class="fas fa-utensils ghana-yellow"></i>
-                        <span>Food & Groceries</span>
-                        <div class="amount">₵ 800</div>
-                    </div>
-                    <div class="preview-card">
-                        <i class="fas fa-piggy-bank ghana-green"></i>
-                        <span>Savings</span>
-                        <div class="amount">₵ 500</div>
-                    </div>
-                </div>
-            </div>
+    <div class="hero-content">
+        <div class="hero-text animate-fade-in">
+            <h1 class="hero-title">
+                Smart <span class="gradient-text">Budget Planning</span><br>
+                for Ghana <span class="cedis-symbol">₵</span>
+            </h1>
+            <p class="hero-subtitle">
+                Create personalized budget plans tailored to your lifestyle and financial goals in Ghana Cedis
+            </p>
+            <a href="form.html" class="cta-button">
+                <span>Start Planning</span>
+                <i class="fas fa-arrow-right"></i>
+            </a>
         </div>
-
-        <div class="features-section">
-            <div class="container">
-                <div class="features-grid">
-                    <div class="feature-card animate-on-scroll">
-                        <div class="feature-icon ghana-red">
-                            <i class="fas fa-calculator"></i>
-                        </div>
-                        <h3>Smart Calculations</h3>
-                        <p>AI-powered budget allocation based on Ghanaian living standards</p>
-                    </div>
-                    <div class="feature-card animate-on-scroll">
-                        <div class="feature-icon ghana-yellow">
-                            <i class="fas fa-chart-pie"></i>
-                        </div>
-                        <h3>Visual Insights</h3>
-                        <p>Beautiful charts and dashboards to track your financial health</p>
-                    </div>
-                    <div class="feature-card animate-on-scroll">
-                        <div class="feature-icon ghana-green">
-                            <i class="fas fa-download"></i>
-                        </div>
-                        <h3>Export & Save</h3>
-                        <p>Download your budget plan as PDF for future reference</p>
-                    </div>
+        <div class="hero-visual animate-slide-up">
+            <div class="budget-preview">
+                <div class="preview-card">
+                    <i class="fas fa-home card-icon-primary"></i>
+                    <span>Accommodation</span>
+                    <div class="amount">₵ 1,200</div>
+                </div>
+                <div class="preview-card">
+                    <i class="fas fa-utensils card-icon-secondary"></i>
+                    <span>Food & Groceries</span>
+                    <div class="amount">₵ 800</div>
+                </div>
+                <div class="preview-card">
+                    <i class="fas fa-piggy-bank card-icon-accent"></i>
+                    <span>Savings</span>
+                    <div class="amount">₵ 500</div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- Form Page -->
-    <section id="form" class="section">
-        <div class="form-background">
-            <div class="floating-shapes">
-                <div class="shape shape-1"></div>
-                <div class="shape shape-2"></div>
-                <div class="shape shape-3"></div>
-            </div>
-        </div>
-
-        <div class="form-container">
-            <div class="form-header">
-                <button class="back-button" onclick="showLanding()">
-                    <i class="fas fa-arrow-left"></i>
-                    Back
-                </button>
-                <h2 class="form-title">Tell Us About Your <span class="gradient-text">Financial Life</span></h2>
-                <p class="form-subtitle">We'll create a personalized budget plan just for you</p>
-            </div>
-
-            <form id="budgetForm" action="https://formspree.io/f/manbyqbg" method="POST" class="budget-form">
-                <div class="form-steps">
-                    <div class="step active">1</div>
-                    <div class="step-line"></div>
-                    <div class="step">2</div>
-                    <div class="step-line"></div>
-                    <div class="step">3</div>
-                </div>
-
-                <div class="form-step active" data-step="1">
-                    <h3 class="step-title">Basic Information</h3>
-                    <div class="form-grid">
-                        <div class="form-group">
-                            <label for="income">Monthly Income (₵)</label>
-                            <div class="input-group">
-                                <span class="input-prefix">₵</span>
-                                <input type="number" id="income" name="income" required min="0" step="0.01">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="occupation">Occupation</label>
-                            <select id="occupation" name="occupation" required>
-                                <option value="">Select your occupation</option>
-                                <option value="student">Student</option>
-                                <option value="teacher">Teacher</option>
-                                <option value="civil_servant">Civil Servant</option>
-                                <option value="private_employee">Private Employee</option>
-                                <option value="entrepreneur">Entrepreneur</option>
-                                <option value="freelancer">Freelancer</option>
-                                <option value="healthcare">Healthcare Worker</option>
-                                <option value="engineer">Engineer</option>
-                                <option value="other">Other</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="education">Education Level</label>
-                            <select id="education" name="education" required>
-                                <option value="">Select your education level</option>
-                                <option value="basic">Basic Education</option>
-                                <option value="secondary">Secondary/SHS</option>
-                                <option value="tertiary">Tertiary/University</option>
-                                <option value="postgraduate">Postgraduate</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="duration">Budget Duration</label>
-                            <select id="duration" name="duration" required>
-                                <option value="">Select duration</option>
-                                <option value="weekly">Weekly</option>
-                                <option value="monthly">Monthly</option>
-                                <option value="quarterly">Quarterly</option>
-                            </select>
-                        </div>
+    <div class="features-section">
+        <div class="container">
+            <h2 class="section-title">Why Choose Our Budget Planner?</h2>
+            <div class="features-grid">
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon icon-primary">
+                        <i class="fas fa-calculator"></i>
                     </div>
-                    <button type="button" class="next-button" onclick="nextStep()">
-                        Next <i class="fas fa-arrow-right"></i>
-                    </button>
+                    <h3>Smart Calculations</h3>
+                    <p>AI-powered budget allocation based on Ghanaian living standards and tax rates</p>
                 </div>
-
-                <div class="form-step" data-step="2">
-                    <h3 class="step-title">Lifestyle & Expenses</h3>
-                    <div class="form-grid">
-                        <div class="form-group">
-                            <label for="rent">Current Rent/Accommodation (₵)</label>
-                            <div class="input-group">
-                                <span class="input-prefix">₵</span>
-                                <input type="number" id="rent" name="rent" min="0" step="0.01">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="transport">Transport Expenses (₵)</label>
-                            <div class="input-group">
-                                <span class="input-prefix">₵</span>
-                                <input type="number" id="transport" name="transport" min="0" step="0.01">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="food">Food & Groceries (₵)</label>
-                            <div class="input-group">
-                                <span class="input-prefix">₵</span>
-                                <input type="number" id="food" name="food" min="0" step="0.01">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="lifestyle">Lifestyle</label>
-                            <select id="lifestyle" name="lifestyle" required>
-                                <option value="">Select your lifestyle</option>
-                                <option value="minimalist">Minimalist</option>
-                                <option value="moderate">Moderate</option>
-                                <option value="comfortable">Comfortable</option>
-                                <option value="luxury">Luxury</option>
-                            </select>
-                        </div>
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon icon-secondary">
+                        <i class="fas fa-chart-pie"></i>
                     </div>
-                    <div class="form-navigation">
-                        <button type="button" class="prev-button" onclick="prevStep()">
-                            <i class="fas fa-arrow-left"></i> Previous
-                        </button>
-                        <button type="button" class="next-button" onclick="nextStep()">
-                            Next <i class="fas fa-arrow-right"></i>
-                        </button>
-                    </div>
+                    <h3>Visual Insights</h3>
+                    <p>Beautiful charts and dashboards to track your financial health and progress</p>
                 </div>
-
-                <div class="form-step" data-step="3">
-                    <h3 class="step-title">Financial Goals</h3>
-                    <div class="form-grid">
-                        <div class="form-group full-width">
-                            <label for="goals">Primary Financial Goals</label>
-                            <div class="checkbox-group">
-                                <label class="checkbox-item">
-                                    <input type="checkbox" name="goals" value="emergency_fund">
-                                    <span class="checkmark"></span>
-                                    Build Emergency Fund
-                                </label>
-                                <label class="checkbox-item">
-                                    <input type="checkbox" name="goals" value="buy_house">
-                                    <span class="checkmark"></span>
-                                    Buy a House
-                                </label>
-                                <label class="checkbox-item">
-                                    <input type="checkbox" name="goals" value="education">
-                                    <span class="checkmark"></span>
-                                    Education/Skills Development
-                                </label>
-                                <label class="checkbox-item">
-                                    <input type="checkbox" name="goals" value="business">
-                                    <span class="checkmark"></span>
-                                    Start a Business
-                                </label>
-                                <label class="checkbox-item">
-                                    <input type="checkbox" name="goals" value="retirement">
-                                    <span class="checkmark"></span>
-                                    Retirement Planning
-                                </label>
-                                <label class="checkbox-item">
-                                    <input type="checkbox" name="goals" value="investment">
-                                    <span class="checkmark"></span>
-                                    Investment Portfolio
-                                </label>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="savings_target">Monthly Savings Target (₵)</label>
-                            <div class="input-group">
-                                <span class="input-prefix">₵</span>
-                                <input type="number" id="savings_target" name="savings_target" min="0" step="0.01">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="priority">Top Priority</label>
-                            <select id="priority" name="priority" required>
-                                <option value="">Select your top priority</option>
-                                <option value="saving">Saving Money</option>
-                                <option value="debt_reduction">Debt Reduction</option>
-                                <option value="investment">Investment Growth</option>
-                                <option value="lifestyle">Lifestyle Improvement</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-navigation">
-                        <button type="button" class="prev-button" onclick="prevStep()">
-                            <i class="fas fa-arrow-left"></i> Previous
-                        </button>
-                        <button type="submit" class="submit-button">
-                            <span>Generate My Budget</span>
-                            <i class="fas fa-magic"></i>
-                        </button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </section>
-
-    <!-- Results Page -->
-    <section id="results" class="section">
-        <div class="results-background">
-            <div class="floating-shapes">
-                <div class="shape shape-1"></div>
-                <div class="shape shape-2"></div>
-                <div class="shape shape-3"></div>
-                <div class="shape shape-4"></div>
-            </div>
-        </div>
-
-        <div class="results-container">
-            <div class="results-header">
-                <button class="back-button" onclick="showForm()">
-                    <i class="fas fa-arrow-left"></i>
-                    Back to Form
-                </button>
-                <div class="results-title-section">
-                    <h1 class="results-title animate-fade-in">
-                        Your Personalized <span class="gradient-text">Budget Plan</span>
-                    </h1>
-                    <p class="results-subtitle animate-fade-in">
-                        Smart financial planning tailored for your lifestyle in Ghana
-                    </p>
-                </div>
-                <div class="export-buttons">
-                    <button class="export-btn" onclick="exportToPDF()">
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon icon-accent">
                         <i class="fas fa-download"></i>
-                        Download PDF
-                    </button>
-                    <button class="share-btn" onclick="shareResults()">
-                        <i class="fas fa-share"></i>
-                        Share
-                    </button>
+                    </div>
+                    <h3>Export & Save</h3>
+                    <p>Download your budget plan as PDF for future reference and planning</p>
                 </div>
-            </div>
-
-            <div class="dashboard" id="dashboard">
-                <!-- Income Overview -->
-                <div class="dashboard-card income-card animate-slide-up">
-                    <div class="card-header">
-                        <div class="card-icon ghana-green">
-                            <i class="fas fa-wallet"></i>
-                        </div>
-                        <div class="card-title">
-                            <h3>Monthly Income</h3>
-                            <p>Your total earnings</p>
-                        </div>
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon icon-primary">
+                        <i class="fas fa-shield-alt"></i>
                     </div>
-                    <div class="card-content">
-                        <div class="amount-display">
-                            <span class="currency">₵</span>
-                            <span class="amount" id="totalIncome">0</span>
-                        </div>
-                        <div class="income-breakdown">
-                            <div class="breakdown-item">
-                                <span>After Tax</span>
-                                <span id="afterTax">₵ 0</span>
-                            </div>
-                        </div>
-                    </div>
+                    <h3>Privacy First</h3>
+                    <p>Your data is never stored - used only to generate your personalized budget</p>
                 </div>
-
-                <!-- Budget Allocation Chart -->
-                <div class="dashboard-card chart-card animate-slide-up">
-                    <div class="card-header">
-                        <div class="card-icon ghana-yellow">
-                            <i class="fas fa-chart-pie"></i>
-                        </div>
-                        <div class="card-title">
-                            <h3>Budget Allocation</h3>
-                            <p>How your money is distributed</p>
-                        </div>
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon icon-secondary">
+                        <i class="fas fa-mobile-alt"></i>
                     </div>
-                    <div class="card-content">
-                        <canvas id="budgetChart"></canvas>
-                    </div>
+                    <h3>Mobile Friendly</h3>
+                    <p>Access your budget planner anywhere, anytime on any device</p>
                 </div>
-
-                <!-- Needs Section -->
-                <div class="dashboard-card needs-card animate-slide-up">
-                    <div class="card-header">
-                        <div class="card-icon ghana-red">
-                            <i class="fas fa-home"></i>
-                        </div>
-                        <div class="card-title">
-                            <h3>Essential Needs</h3>
-                            <p>Must-have expenses</p>
-                        </div>
+                <div class="feature-card animate-on-scroll">
+                    <div class="feature-icon icon-accent">
+                        <i class="fas fa-lightbulb"></i>
                     </div>
-                    <div class="card-content">
-                        <div class="expense-items" id="needsItems">
-                            <!-- Will be populated by JavaScript -->
-                        </div>
-                        <div class="category-total">
-                            <span>Total Needs:</span>
-                            <span class="amount" id="totalNeeds">₵ 0</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Wants Section -->
-                <div class="dashboard-card wants-card animate-slide-up">
-                    <div class="card-header">
-                        <div class="card-icon ghana-yellow">
-                            <i class="fas fa-coffee"></i>
-                        </div>
-                        <div class="card-title">
-                            <h3>Lifestyle & Wants</h3>
-                            <p>Enjoyment and comfort</p>
-                        </div>
-                    </div>
-                    <div class="card-content">
-                        <div class="expense-items" id="wantsItems">
-                            <!-- Will be populated by JavaScript -->
-                        </div>
-                        <div class="category-total">
-                            <span>Total Wants:</span>
-                            <span class="amount" id="totalWants">₵ 0</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Savings Section -->
-                <div class="dashboard-card savings-card animate-slide-up">
-                    <div class="card-header">
-                        <div class="card-icon ghana-green">
-                            <i class="fas fa-piggy-bank"></i>
-                        </div>
-                        <div class="card-title">
-                            <h3>Savings & Investments</h3>
-                            <p>Building your future</p>
-                        </div>
-                    </div>
-                    <div class="card-content">
-                        <div class="savings-breakdown" id="savingsBreakdown">
-                            <!-- Will be populated by JavaScript -->
-                        </div>
-                        <div class="savings-progress">
-                            <div class="progress-bar">
-                                <div class="progress-fill" id="savingsProgress"></div>
-                            </div>
-                            <span class="progress-text" id="savingsPercentage">0%</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Financial Health Score -->
-                <div class="dashboard-card health-card animate-slide-up">
-                    <div class="card-header">
-                        <div class="card-icon ghana-green">
-                            <i class="fas fa-heartbeat"></i>
-                        </div>
-                        <div class="card-title">
-                            <h3>Financial Health Score</h3>
-                            <p>Overall financial wellness</p>
-                        </div>
-                    </div>
-                    <div class="card-content">
-                        <div class="health-score">
-                            <div class="score-circle">
-                                <canvas id="healthScoreChart"></canvas>
-                                <div class="score-text">
-                                    <span class="score-number" id="healthScore">85</span>
-                                    <span class="score-label">Score</span>
-                                </div>
-                            </div>
-                            <div class="health-insights" id="healthInsights">
-                                <!-- Will be populated by JavaScript -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Recommendations -->
-                <div class="dashboard-card recommendations-card animate-slide-up">
-                    <div class="card-header">
-                        <div class="card-icon ghana-yellow">
-                            <i class="fas fa-lightbulb"></i>
-                        </div>
-                        <div class="card-title">
-                            <h3>Smart Recommendations</h3>
-                            <p>Tips to improve your finances</p>
-                        </div>
-                    </div>
-                    <div class="card-content">
-                        <div class="recommendations-list" id="recommendationsList">
-                            <!-- Will be populated by JavaScript -->
-                        </div>
-                    </div>
+                    <h3>Smart Recommendations</h3>
+                    <p>Get personalized tips to improve your financial health and savings</p>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- Terms & Privacy -->
-    <section id="terms" class="section">
-        <div class="terms-container">
-            <div class="terms-header">
-                <button class="back-button" onclick="showLanding()">
-                    <i class="fas fa-arrow-left"></i>
-                    Back to Home
-                </button>
-                <h2 class="terms-title">Terms & Conditions</h2>
-            </div>
-            
-            <div class="terms-content">
-                <div class="terms-section">
-                    <h3>Privacy Notice</h3>
-                    <p>Your privacy is our top priority. We want to be completely transparent about how we handle your data:</p>
-                    <ul>
-                        <li><strong>Data Collection:</strong> User data is only collected to generate your personalized budget plan.</li>
-                        <li><strong>No Storage:</strong> Your personal financial information will not be stored on our servers.</li>
-                        <li><strong>No Sharing:</strong> We will never share, sell, or distribute your data to third parties.</li>
-                        <li><strong>No Reuse:</strong> Your data will not be reused for any other purposes beyond generating your budget plan.</li>
-                        <li><strong>Temporary Processing:</strong> Data is processed temporarily only for the duration needed to create your budget plan.</li>
-                    </ul>
-                </div>
-
-                <div class="terms-section">
-                    <h3>Service Terms</h3>
-                    <ul>
-                        <li>This budget planner provides suggestions based on general financial principles and Ghanaian economic standards.</li>
-                        <li>The recommendations are for informational purposes only and should not replace professional financial advice.</li>
-                        <li>Users are responsible for making their own financial decisions based on their personal circumstances.</li>
-                        <li>We do not guarantee specific financial outcomes from following the budget plan.</li>
-                    </ul>
-                </div>
-
-                <div class="terms-section">
-                    <h3>Data Security</h3>
-                    <ul>
-                        <li>All data transmission is encrypted using industry-standard SSL protocols.</li>
-                        <li>No financial account information or passwords are collected.</li>
-                        <li>The service only processes the budget-related information you voluntarily provide.</li>
-                    </ul>
-                </div>
-
-                <div class="terms-section">
-                    <h3>Contact</h3>
-                    <p>If you have any questions about these terms or our privacy practices, please contact us through the form on our website.</p>
-                </div>
+    <div class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Take Control of Your Finances?</h2>
+                <p>Join thousands of Ghanaians who have transformed their financial lives with our smart budget planner.</p>
+                <a href="form.html" class="cta-button-large">
+                    <span>Create Your Budget Plan</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
             </div>
         </div>
-    </section>
+    </div>
 
-    <script src="script.js"></script>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="logo">
+                        <i class="fas fa-piggy-bank ghana-flag-icon"></i>
+                        <span>GhanaBudget</span>
+                    </div>
+                    <p>Empowering Ghanaians to take control of their financial future, one budget at a time.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="form.html">Create Budget</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="terms.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Features</h4>
+                    <ul>
+                        <li><a href="#features">Budget Calculator</a></li>
+                        <li><a href="#features">Financial Health</a></li>
+                        <li><a href="#features">PDF Export</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="mailto:support@ghanabudget.com">Contact Us</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="terms.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Ghana Budget Planner. Made with ❤️ for Ghana 🇬🇭</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="landing.js"></script>
 </body>
 </html>

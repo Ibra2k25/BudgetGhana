@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Budget Plan | Ghana Cedis Budget Planner</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body class="form-page">
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-piggy-bank ghana-flag-icon"></i>
+                <span>GhanaBudget</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="terms.html" class="nav-link">Terms & Privacy</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="form-background">
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+        </div>
+    </div>
+
+    <div class="form-container">
+        <div class="form-header">
+            <a href="index.html" class="back-button">
+                <i class="fas fa-arrow-left"></i>
+                Back to Home
+            </a>
+            <h1 class="form-title">Tell Us About Your <span class="gradient-text">Financial Life</span></h1>
+            <p class="form-subtitle">We'll create a personalized budget plan just for you</p>
+        </div>
+
+        <div class="form-progress">
+            <div class="progress-bar">
+                <div class="progress-fill" id="formProgress"></div>
+            </div>
+            <div class="progress-text">
+                <span id="currentStep">1</span> of <span>3</span> steps
+            </div>
+        </div>
+
+        <form id="budgetForm" action="https://formspree.io/f/manbyqbg" method="POST" class="budget-form">
+            <div class="form-steps">
+                <div class="step active" data-step="1">
+                    <span class="step-number">1</span>
+                    <span class="step-label">Basic Info</span>
+                </div>
+                <div class="step-line"></div>
+                <div class="step" data-step="2">
+                    <span class="step-number">2</span>
+                    <span class="step-label">Lifestyle</span>
+                </div>
+                <div class="step-line"></div>
+                <div class="step" data-step="3">
+                    <span class="step-number">3</span>
+                    <span class="step-label">Goals</span>
+                </div>
+            </div>
+
+            <div class="form-step active" data-step="1">
+                <h2 class="step-title">Basic Information</h2>
+                <p class="step-description">Let's start with your basic financial information</p>
+                
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="income">Monthly Income (₵)</label>
+                        <div class="input-group">
+                            <span class="input-prefix">₵</span>
+                            <input type="number" id="income" name="income" required min="0" step="0.01" placeholder="0">
+                        </div>
+                        <small class="input-hint">Enter your total monthly income before taxes</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="occupation">Occupation</label>
+                        <select id="occupation" name="occupation" required>
+                            <option value="">Select your occupation</option>
+                            <option value="student">Student</option>
+                            <option value="teacher">Teacher</option>
+                            <option value="civil_servant">Civil Servant</option>
+                            <option value="private_employee">Private Employee</option>
+                            <option value="entrepreneur">Entrepreneur</option>
+                            <option value="freelancer">Freelancer</option>
+                            <option value="healthcare">Healthcare Worker</option>
+                            <option value="engineer">Engineer</option>
+                            <option value="banker">Banker</option>
+                            <option value="trader">Trader</option>
+                            <option value="farmer">Farmer</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="education">Education Level</label>
+                        <select id="education" name="education" required>
+                            <option value="">Select your education level</option>
+                            <option value="basic">Basic Education</option>
+                            <option value="secondary">Secondary/SHS</option>
+                            <option value="tertiary">Tertiary/University</option>
+                            <option value="postgraduate">Postgraduate</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="duration">Budget Duration</label>
+                        <select id="duration" name="duration" required>
+                            <option value="">Select duration</option>
+                            <option value="weekly">Weekly</option>
+                            <option value="monthly">Monthly</option>
+                            <option value="quarterly">Quarterly</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-navigation">
+                    <button type="button" class="next-button" onclick="nextStep()">
+                        Next Step <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="form-step" data-step="2">
+                <h2 class="step-title">Lifestyle & Current Expenses</h2>
+                <p class="step-description">Tell us about your current spending and lifestyle preferences</p>
+                
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="rent">Current Rent/Accommodation (₵)</label>
+                        <div class="input-group">
+                            <span class="input-prefix">₵</span>
+                            <input type="number" id="rent" name="rent" min="0" step="0.01" placeholder="0">
+                        </div>
+                        <small class="input-hint">Leave blank if you don't pay rent</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="transport">Transport Expenses (₵)</label>
+                        <div class="input-group">
+                            <span class="input-prefix">₵</span>
+                            <input type="number" id="transport" name="transport" min="0" step="0.01" placeholder="0">
+                        </div>
+                        <small class="input-hint">Monthly transport/commuting costs</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="food">Food & Groceries (₵)</label>
+                        <div class="input-group">
+                            <span class="input-prefix">₵</span>
+                            <input type="number" id="food" name="food" min="0" step="0.01" placeholder="0">
+                        </div>
+                        <small class="input-hint">Monthly food and grocery expenses</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="lifestyle">Lifestyle Preference</label>
+                        <select id="lifestyle" name="lifestyle" required>
+                            <option value="">Select your lifestyle</option>
+                            <option value="minimalist">Minimalist - Simple living, essential purchases only</option>
+                            <option value="moderate">Moderate - Balanced spending on needs and some wants</option>
+                            <option value="comfortable">Comfortable - Good quality lifestyle with regular treats</option>
+                            <option value="luxury">Luxury - Premium lifestyle with high-end preferences</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-navigation">
+                    <button type="button" class="prev-button" onclick="prevStep()">
+                        <i class="fas fa-arrow-left"></i> Previous
+                    </button>
+                    <button type="button" class="next-button" onclick="nextStep()">
+                        Next Step <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="form-step" data-step="3">
+                <h2 class="step-title">Financial Goals & Priorities</h2>
+                <p class="step-description">What are your main financial objectives?</p>
+                
+                <div class="form-grid">
+                    <div class="form-group full-width">
+                        <label>Primary Financial Goals (Select all that apply)</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="goals" value="emergency_fund">
+                                <span class="checkmark"></span>
+                                <div class="checkbox-content">
+                                    <strong>Build Emergency Fund</strong>
+                                    <small>Save for unexpected expenses</small>
+                                </div>
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="goals" value="buy_house">
+                                <span class="checkmark"></span>
+                                <div class="checkbox-content">
+                                    <strong>Buy a House</strong>
+                                    <small>Save for property purchase</small>
+                                </div>
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="goals" value="education">
+                                <span class="checkmark"></span>
+                                <div class="checkbox-content">
+                                    <strong>Education/Skills Development</strong>
+                                    <small>Invest in learning and growth</small>
+                                </div>
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="goals" value="business">
+                                <span class="checkmark"></span>
+                                <div class="checkbox-content">
+                                    <strong>Start a Business</strong>
+                                    <small>Save capital for entrepreneurship</small>
+                                </div>
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="goals" value="retirement">
+                                <span class="checkmark"></span>
+                                <div class="checkbox-content">
+                                    <strong>Retirement Planning</strong>
+                                    <small>Long-term financial security</small>
+                                </div>
+                            </label>
+                            <label class="checkbox-item">
+                                <input type="checkbox" name="goals" value="investment">
+                                <span class="checkmark"></span>
+                                <div class="checkbox-content">
+                                    <strong>Investment Portfolio</strong>
+                                    <small>Grow wealth through investments</small>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="savings_target">Monthly Savings Target (₵)</label>
+                        <div class="input-group">
+                            <span class="input-prefix">₵</span>
+                            <input type="number" id="savings_target" name="savings_target" min="0" step="0.01" placeholder="0">
+                        </div>
+                        <small class="input-hint">How much would you like to save monthly?</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="priority">Top Financial Priority</label>
+                        <select id="priority" name="priority" required>
+                            <option value="">Select your top priority</option>
+                            <option value="saving">Maximizing Savings</option>
+                            <option value="debt_reduction">Debt Reduction</option>
+                            <option value="investment">Investment Growth</option>
+                            <option value="lifestyle">Lifestyle Improvement</option>
+                            <option value="emergency">Emergency Preparedness</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-navigation">
+                    <button type="button" class="prev-button" onclick="prevStep()">
+                        <i class="fas fa-arrow-left"></i> Previous
+                    </button>
+                    <button type="submit" class="submit-button">
+                        <span>Generate My Budget Plan</span>
+                        <i class="fas fa-magic"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script src="form.js"></script>
+</body>
+</html>
